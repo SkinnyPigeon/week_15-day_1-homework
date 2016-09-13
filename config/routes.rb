@@ -3,6 +3,14 @@ Rails.application.routes.draw do
   scope path: 'api' do 
     resources :shows
   end
+
+  scope path: 'api' do 
+    resources :users
+  end
+
+  scope path: 'api' do 
+    resources :favourites
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
