@@ -4,7 +4,17 @@ class UsersController < ApplicationController
 
   def index
     users = User.all
-    render :json => users
+    render :json => users.as_json({
+      :include => {
+        :favourites => { 
+          :include => {
+            :show => {
+              :only => [ :title, :series, :description, :image, :programmeID ]
+          }
+        }, :only => :rating 
+      }
+    }, :only => [ :name, :age, :sex ]
+  })
   end 
 
   def show
